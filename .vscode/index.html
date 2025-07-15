@@ -3,56 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aluguel de Quadras</title>
-    <link rel="stylesheet" href="quadra.css">
+    <title>Golden Sports - Aluguel de Quadras</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="quadra.css">
 </head>
 <body>
-    <div class="slideshow-container">
-        <!-- Slides das quadras -->
-        <div class="quadra-slide active" style="background-image: url('imagens/AdobeStock_1325006627_Preview.jpeg');">
-            <div class="slide-content">
-                <h2>Quadra Poliesportiva 1</h2>
-                <p>Vôlei / Futsal</p>
-                <p class="price">R$ 90,00/hora</p>
-                <button class="btn-alugar">Alugar Agora</button>
-            </div>
-        </div>
-        
-        <div class="quadra-slide" style="background-image: url('imagens/AdobeStock_1325006627_Preview.jpeg');">
-            <div class="slide-content">
-                <h2> Quadra Poliesportiva 2</h2>
-                <p>Vôlei / Futsal</p>
-                <p class="price">R$ 90,00/hora</p>
-                <button class="btn-alugar">Alugar Agora</button>
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">Golden Sports</a>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
 
+    <!-- Hero Slider -->
+    <section class="hero-slider" id="home">
+        <div class="slide active" style="background-image: url('imagens/quadracoberta.jpg.jpeg');">
+            <div class="slide-content">
+                <h1>Quadra Poliesportiva Premium</h1>
+                <p>Alugue agora e garanta seu horário para partidas inesquecíveis</p>
+                <a href="#reserva" class="cta-button">Reserve Já</a>
             </div>
-            
+        </div>
+        
+        <div class="slide" style="background-image: url('imagens/quadracoberta2.jpg.jpeg');">
+            <div class="slide-content">
+                <h1>Quadra de Vôlei Profissional</h1>
+                <p>Superfície perfeita para jogos de alto nível</p>
+                <a href="#reserva" class="cta-button">Reserve Já</a>
+            </div>
+        </div>
+        
+        <div class="slide" style="background-image: url('imagens/areia2.jpg.jpeg');">
+            <div class="slide-content">
+                <h1>Quadra de Areia</h1>
+                <p>Experimente o melhor do vôlei de praia e futevôlei</p>
+                <a href="#reserva" class="cta-button">Reserve Já</a>
+            </div>
+
+            <div class="slide" style="background-image: url('imagens/areia.jpg.jpeg');">
+            <div class="slide-content">
+                <h1>Quadra de Areia</h1>
+                <p>Experimente o melhor do vôlei de praia e futevôlei</p>
+                <a href="#reserva" class="cta-button">Reserve Já</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Booking Section -->
+        <section class="booking-section" id="reserva">
+            <h2><i class="fas fa-calendar-alt"></i> Faça sua Reserva</h2>
+            <form class="booking-form">
+                <div class="form-group">
+                    <label for="quadra">Quadra:</label>
+                    <select id="quadra" required>
+                        <option value="">Selecione uma quadra</option>
+                        <option value="quadra1">Quadra Poliesportiva 1</option>
+                        <option value="quadra2">Quadra Poliesportiva 2</option>
+                        <option value="quadra3">Quadra de Areia 1</option>
+                        <option value="quadra4">Quadra de Areia 2</option>
+                    </select>
+                </div>
                 
-         </div>
+                <div class="form-group">
+                    <label for="nome">Nome Completo:</label>
+                    <input type="text" id="nome" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" id="telefone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="data">Data:</label>
+                    <input type="date" id="data" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="horario">Horário:</label>
+                    <select id="horario" required>
+                        <option value="">Selecione um horário</option>
+                        <option value="08:00">08:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="12:00">12:00</option>
+                        <option value="14:00">14:00</option>
+                        <option value="16:00">16:00</option>
+                        <option value="18:00">18:00</option>
+                        <option value="20:00">20:00</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="duracao">Duração (horas):</label>
+                    <select id="duracao" required>
+                        <option value="1">1 hora</option>
+                        <option value="2">2 horas</option>
+                        <option value="3">3 horas</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="submit-btn">Confirmar Reserva</button>
+            </form>
+        </section>
         
-        <div class="quadra-slide" style="background-image: url('imagens/AdobeStock_640053009_Preview.jpeg');">
-            <div class="slide-content">
-                <h2>Quadra de Areia 1</h2>
-                <p>Vôlei de Praia</p>
-                <p class="price">R$ 60,00/hora</p>
-                <button class="btn-alugar">Alugar Agora</button>
-            </div>
-        </div>
-        <div class="quadra-slide" style="background-image: url('imagens/AdobeStock_640053009_Preview.jpeg');">
-            <div class="slide-content">
-                <h2>Quadra de Areia 2</h2>
-                <p>Futevôlei</p>
-                <p class="price">R$ 60,00/hora</p>
-                <button class="btn-alugar">Alugar Agora</button>
-            </div>
-        </div>
-        
-        <!-- Botões de navegação -->
-        <button class="slide-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-        <button class="slide-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+        <!-- Map Section -->
+        <section class="map-section">
+            <div id="map"></div>
+        </section>
     </div>
 
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/5511999999999" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Golden Sports - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="quadra.js"></script>
 </body>
 </html>
