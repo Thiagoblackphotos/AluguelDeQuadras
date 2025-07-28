@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ServidorReserva",
+            "request": "launch",
+            "mainClass": "ServidorReserva",
+            "projectName": "AgendamentoDeQuadras_2fbb3b82"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"

@@ -12,7 +12,7 @@ function nextSlide() {
     showSlide(currentSlide + 1);
 }
 
-// Mudar slide a cada 5 segundos
+// Mudar slide a cada 3 segundos
 setInterval(nextSlide, 5000);
 
 // Inicializar Mapa
@@ -44,6 +44,41 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Form submission
 document.querySelector('.booking-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    alert('Reserva enviada com sucesso! Entraremos em contato para confirmação.');
-    this.reset();
+    
+    // PEGA OS DADOS DO FORMULARIO
+    const nome = document.querySelector('input[name="nome"]').value;
+    const telefone = document.querySelector('input[name="telefone"]').value;
+    const horario = document.querySelector('input[name="horario"]').value;
+
+    // CRIA O OBJETO COM OS DADOS
+    const reserva = {
+        nome: nome,
+        telefone: telefone,
+        horario: horario
+    };
+
+    //ENVIA OS DADOS PARA BACKEND
+    fetch('http://localhost:8000/reservar', {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(reserva) //transforma o objeto em JSON para o java poder ler
+    })
+    .then(response=> {
+        if (response.ok) {
+            alert('Reserva enviada com sucesso!');
+            document.querySelector('.booking-form').reset();
+
+        } else {
+            alert('Erro ao enviar reserva. Tente novamente.');
+        }
+    })
+
+    .catch(error => {
+        alert('Erro de conexão com o servidor.');
+        console.error(error);
+    }) 
+    
+    
 });
